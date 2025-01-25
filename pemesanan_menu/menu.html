@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Kafe Kita</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        header {
+            background-color: #141313;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #3d3837;
+            font-size: 2em;
+        }
+        .menu-grid {
+            padding-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .menu-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+        .menu-item img {
+            width: 75%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .menu-item h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .menu-item p {
+            margin: 0;
+            padding: 0 10px 10px;
+            color: #666;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Daftar Menu</h1>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="nasi-goreng.jpg" alt="Nasi Goreng">
+                <h3>Nasi Goreng</h3>
+                <p>Rp20,000</p>
+                <button onclick="tambahPesanan('Nasi Goreng', 20000)">Tambah</button>
+            </div>
+            <div class="menu-item">
+                <img src="mie-ayam.jpg" alt="Mie Ayam">
+                <h3>Mie Ayam</h3>
+                <p>Rp18,000</p>
+                <button onclick="tambahPesanan('Mie Ayam', 18000)">Tambah</button>
+            </div>
+            <div class="menu-item">
+                <img src="teh-manis.jpg" alt="Es Teh Manis">
+                <h3>Es Teh Manis</h3>
+                <p>Rp8,000</p>
+                <button onclick="tambahPesanan('Es Teh Manis', 8000)">Tambah</button>
+            </div>
+            <div class="menu-item">
+                <img src="kopi.jpg" alt="Kopi">
+                <h3>Kopi</h3>
+                <p>Rp10,000</p>
+                <button onclick="tambahPesanan('Kopi', 10000)">Tambah</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Kafe Kita. All rights reserved.</p>
+    </footer>
+</body>
+</html>

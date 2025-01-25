@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Kafe & Resto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1; 
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+
+    <header class="bg-black text-white fixed w-full z-10">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="logo">
+                <h1 class="text-2xl font-bold">Kafe Kita</h1>
+            </div>
+            <nav>
+                <ul class="flex gap-6">
+                    <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-500">Tentang Kami</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-500">Hubungi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-16"> 
+        <section id="kontak" class="py-16 px-6 md:px-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-6">Jangan lupa Menghubungi Kafe KITA!</h1>
+                <p class="text-lg text-gray-700 mb-12">
+                    Kafe Kita, tempat terbaik untuk menciptakan momen indah. 
+                    Dari kopi spesial hingga hidangan menggugah selera, semua ada di sini untuk Anda!
+                </p>
+            </div>
+            <div class="kontak-container grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <div class="kontak-box text-center p-6 border border-gray-200 rounded-lg shadow-lg">
+                    <div class="icon mb-4">
+                        <img src="phone-icon.jpg" alt="Phone Icon" class="mx-auto w-12 h-12">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Nomor Telepon</h3>
+                    <p class="text-gray-700">Telepon: <span class="font-bold">(021) 123-4567</span></p>
+                    <p class="text-gray-700">
+                        WhatsApp: <a href="https://wa.me/081299322948" target="_blank" class="text-yellow-500 hover:underline">0812-9932-2948</a>
+                    </p>
+                </div>
+                
+                <div class="kontak-box text-center p-6 border border-gray-200 rounded-lg shadow-lg">
+                    <div class="icon mb-4">
+                        <img src="email-icon.jpg" alt="Email Icon" class="mx-auto w-12 h-12">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email Kami</h3>
+                    <p class="text-gray-700">
+                        <a href="mailto:info@kafekita.com" class="text-yellow-500 hover:underline">info@kafekita.com</a>
+                    </p>
+                </div>
+                
+                <div class="kontak-box text-center p-6 border border-gray-200 rounded-lg shadow-lg">
+                    <div class="icon mb-4">
+                        <img src="location-icon.jpg" alt="Location Icon" class="mx-auto w-12 h-12">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Alamat</h3>
+                    <p class="text-gray-700">Jl. Akses UI. 123, Kelapa Dua<br>Depok, Jawa Barat</p>
+                    <a href="https://maps.app.goo.gl/7WzqTZVfCjBqPS919" target="_blank" class="text-yellow-500 hover:underline">Lihat di Peta</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Kafe Kita. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

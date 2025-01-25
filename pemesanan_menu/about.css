@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #495E57, #495E57);
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3 {
+    color: #222;
+    text-transform: capitalize;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+header:hover {
+    background-color: #1a1a1a;
+}
+header .logo h1 {
+    color: #ffffff;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul li {
+    margin: 0;
+}
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #fbb034;
+}
+
+/* Sections */
+section {
+    padding: 60px 15px;
+    margin-bottom: 30px;
+    background-color: #f5f5dd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+section:hover {
+    transform: scale(1.02);
+}
+
+/* Visi & Misi */
+.shadow-lg {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tim Kami */
+.team-member img {
+    transition: transform 0.3s;
+}
+.team-member img:hover {
+    transform: scale(1.1);
+}
+.team-member {
+    transition: box-shadow 0.3s ease;
+}
+.team-member:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Galeri */
+.gallery-images img {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Map */
+.map iframe {
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+.map iframe:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #999;
+    font-size: 14px;
+}
+footer p {
+    margin: 0;
+    transition: color 0.3s;
+}
+footer p:hover {
+    color: #fbb034;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+main {
+    animation: fadeIn 1s ease-in;
+}

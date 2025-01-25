@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe & Resto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script>
+        let cartItems = {};
+
+        // JavaScript function to update the quantity
+        function updateCart(itemId, action, price) {
+            const quantityElement = document.getElementById(`quantity-${itemId}`);
+            let quantity = parseInt(quantityElement.textContent, 10);
+
+            if (action === 'plus') {
+                quantity++;
+            } else if (action === 'minus' && quantity > 0) {
+                quantity--;
+            }
+
+            quantityElement.textContent = quantity;
+
+            // Update cart items
+            if (quantity > 0) {
+                cartItems[itemId] = {
+                    name: itemId.replace('-', ' '),
+                    quantity: quantity,
+                    price: price
+                };
+            } else {
+                delete cartItems[itemId];
+            }
+        }
+
+        // Function to show cart popup
+function showCart() {
+    const cartPopup = document.getElementById('cart-popup');
+    const cartContent = document.getElementById('cart-content');
+    const checkoutButton = document.getElementById('checkout-button');
+    cartContent.innerHTML = ''; // Kosongkan konten sebelumnya
+
+    if (Object.keys(cartItems).length === 0) {
+        cartContent.innerHTML = '<p class="text-gray-500">Keranjang Anda kosong.</p>';
+        checkoutButton.setAttribute('disabled', 'true'); // Nonaktifkan tombol
+        checkoutButton.classList.add('opacity-50', 'cursor-not-allowed'); // Tambahkan kelas untuk tampilan nonaktif
+    } else {
+        let totalPrice = 0;
+        for (const [itemId, itemDetails] of Object.entries(cartItems)) {
+            const { name, quantity, price } = itemDetails;
+            const itemTotal = quantity * price;
+            totalPrice += itemTotal;
+            cartContent.innerHTML += `<div class="flex justify-between items-center border-b py-2">
+                <span>${name} (x${quantity})</span>
+                <span>Rp. ${itemTotal.toLocaleString()}</span>
+            </div>`;
+        }
+        cartContent.innerHTML += `<div class="flex justify-between items-center font-bold border-t pt-2 mt-2">
+            <span>Total</span>
+            <span>Rp. ${totalPrice.toLocaleString()}</span>
+        </div>`;
+        checkoutButton.removeAttribute('disabled'); // Aktifkan tombol
+        checkoutButton.classList.remove('opacity-50', 'cursor-not-allowed'); // Hapus kelas tampilan nonaktif
+    }
+
+    cartPopup.classList.remove('hidden');
+}
+
+// Add click event to checkout button
+document.getElementById('checkout-button').addEventListener('click', function() {
+    if (!this.disabled) {
+        window.location.href = 'payment.html'; // Navigasi ke halaman pembayaran
+    }
+});
+        // Function to close cart popup
+        function closeCart() {
+            const cartPopup = document.getElementById('cart-popup');
+            cartPopup.classList.add('hidden');
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+
+    <header class="bg-black text-white fixed w-full z-20">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="logo">
+                <h1 class="text-2xl font-bold">Kafe Kita</h1>
+            </div>
+            <nav>
+                <ul class="flex gap-6">
+                    <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-500">Tentang Kami</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-500">Hubungi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero relative h-screen flex items-center justify-center text-center text-white bg-cover bg-center" id="home" style="background-image: url('background_cafe.jpg'); z-index: 10;">
+        <div class="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
+        <div class="relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Kafe & Resto Terbaik di Gunadarma</h2>
+            <p class="text-lg md:text-2xl mb-6">"Nikmati pengalaman bersantap yang tak terlupakan di tengah suasana hangat dan menenangkan"</p>
+            <a href="#menu" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded transition">
+                Lihat Menu
+            </a>
+        </div>
+    </section>    
+
+    <!-- About Us Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Tentang Kami</h2>
+            <p class="mb-4">Kafe Kita adalah tempat yang sempurna untuk menikmati hidangan lezat dan suasana yang nyaman. Kami menyajikan berbagai menu yang terbuat dari bahan-bahan berkualitas tinggi dan resep yang telah teruji.</p>
+            <p>Dengan pelayanan yang ramah dan suasana yang hangat, kami berkomitmen untuk memberikan pengalaman bersantap yang tak terlupakan bagi setiap pengunjung.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Testimoni Pelanggan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="border p-4 rounded shadow">
+                    <p class="italic">"Makanan di Kafe Kita sangat lezat! Saya pasti akan kembali lagi."</p>
+                    <p class="font-bold mt-2">- Andi</p>
+                </div>
+                <div class="border p-4 rounded shadow">
+                    <p class="italic">"Suasana yang nyaman dan pelayanan yang ramah. Sangat direkomendasikan!"</p>
+                    <p class="font-bold mt-2">- Siti</p>
+                </div>
+                <div class="border p-4 rounded shadow">
+                    <p class="italic">"Menu yang bervariasi dan harga yang terjangkau. Tempat favorit saya!"</p>
+                    <p class="font-bold mt-2">- Budi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+<section id="menu" class="py-20 bg-white">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8">Menu Kami</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="border p-4 rounded shadow">
+                <img src="nasi-goreng.jpg" alt="Nasi Goreng Spesial" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Nasi Goreng Spesial</h3>
+                <p>Nasi berbumbu rempah, dilengkapi dengan toping.</p>
+                <p class="font-bold">Harga: Rp. 20.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('nasi-goreng', 'minus', 20000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-nasi-goreng" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('nasi-goreng', 'plus', 20000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="mie-ayam.jpg" alt="Mie Ayam" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Mie Ayam</h3>
+                <p>Mie kenyal berpadu dengan ayam bumbu kecap yang gurih.</p>
+                <p class="font-bold">Harga: Rp. 18.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('mie-ayam', 'minus', 18000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-mie-ayam" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('mie-ayam', 'plus', 18000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="sate-ayam.jpg" alt="Sate Ayam" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Sate Ayam</h3>
+                <p>Daging empuk dipanggang sempurna dengan bumbu kacang gurih.</p>
+                <p class="font-bold">Harga: Rp. 17.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('sate-ayam', 'minus', 17000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-sate-ayam" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('sate-ayam', 'plus', 17000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="ayam-geprek.jpg" alt="Ayam Geprek" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Ayam Geprek</h3>
+                <p>Ayam goreng krispi yang dihancurkan bersama sambal pedas.</p>
+                <p class="font-bold">Harga: Rp. 18.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('ayam-geprek', 'minus', 18000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-ayam-geprek" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('ayam-geprek', 'plus', 18000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="mie-nyemek.jpg" alt="Mie Nyemek" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Mie Nyemek</h3>
+                <p>Mie kuah pedas dengan cita rasa khas Nusantara.</p>
+                <p class="font-bold">Harga: Rp. 18.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('mie-nyemek', 'minus', 18000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-mie-nyemek" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('mie-nyemek', 'plus', 18000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="nasicampur-kita.jpg" alt="Nasi Campur Kita" class="w-full h-48 object-cover rounded mb-4">
+                <h3 class="font-semibold">Nasi Campur Kita</h3>
+                <p>Nasi yang disajikan dengan berbagai macam lauk-pauk dan sayuran khas KITA.</p>
+                <p class="font-bold">Harga: Rp. 25.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('nasi-campur', 'minus', 25000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-nasi-campur" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('nasi-campur', 'plus', 25000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="teh-manis.jpg" alt="Es Teh Manis" class="w-full h-46 object-cover rounded mb-4">
+                <h3 class="font-semibold">Es Teh Manis</h3>
+                <p>Minuman teh yang segar dan manis.</p>
+                <p class="font-bold">Harga: Rp. 10.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('teh-manis', 'minus', 10000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-teh-manis" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('teh-manis', 'plus', 10000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="jus-alpukat.jpg" alt="Jus Alpukat" class="w-full h-46 object-cover rounded mb-4">
+                <h3 class="font-semibold">Jus Alpukat</h3>
+                <p>Jus dari buah asli yang nikmat.</p>
+                <p class="font-bold">Harga: Rp. 15.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('jus-alpukat', 'minus', 15000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-jus-alpukat" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('jus-alpukat', 'plus', 15000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+            <div class="border p-4 rounded shadow">
+                <img src="kopi-kita.jpg" alt="Kopi Kita" class="w-full h-46 object-cover rounded mb-4">
+                <h3 class="font-semibold">Kopi Kita</h3>
+                <p>Kopi susu gula aren yang strong khas KITA.</p>
+                <p class="font-bold">Harga: Rp. 20.000</p>
+                <div class="flex justify-end items-center mt-4">
+                    <button onclick="updateCart('kopi-kita', 'minus', 20000)" class="text-red-500 border border-red-500 px-3 py-1 rounded hover:bg-red-500 hover:text-white">-</button>
+                    <span id="quantity-kopi-kita" class="text-lg font-bold mx-2">0</span>
+                    <button onclick="updateCart('kopi-kita', 'plus', 20000)" class="text-green-500 border border-green-500 px-3 py-1 rounded hover:bg-green-500 hover:text-white">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Button Lihat Keranjang -->
+        <div class="mt-8">
+            <button onclick="showCart()" class="flex items-center mx-auto bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow-lg">
+                <i class="fas fa-shopping-cart mr-2"></i>
+                Lihat Keranjang
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Cart Popup -->
+<div id="cart-popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded shadow-lg w-1/3 relative">
+        <button onclick="closeCart()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">
+            <i class="fas fa-times fa-lg"></i>
+        </button>
+        <h2 class="text-2xl font-bold mb-4">Keranjang Anda</h2>
+        <div id="cart-content" class="mb-4">
+            <p class="text-gray-500">Keranjang Anda kosong.</p>
+        </div>
+        <a id="checkout-button" href="payment.html" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded disabled:opacity-50 disabled:pointer-events-none">
+            Perlihatkan ke Kasir
+        </a>        
+    </div>
+</div>
+
+<footer class="bg-black text-white py-6">
+    <div class="container mx-auto text-center">
+        <p>&copy; 2024 Kafe Kita. Semua Hak Dilindungi.</p>
+    </div>
+</footer>
+</body>
+</html>

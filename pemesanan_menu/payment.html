@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="font-sans bg-gradient-to-br from-green-100 via-white to-yellow-100 text-gray-900">
+
+    <main class="pt-0 pb-12">
+        <section class="container mx-auto px-6 text-center">
+            <div class="text-6xl mb-6 text-green-500">
+                <i class="fas fa-check-circle animate-bounce"></i>
+            </div>
+            <h2 class="text-4xl font-extrabold mb-4 text-gray-800">Terima Kasih Telah Memesan! <span class="animate-pulse">🎉</span></h2>
+            <p class="text-xl mb-6 text-gray-700">Pesanan telah berhasil diproses. Kami akan segera menyiapkan pesanan dengan sepenuh hati.</p>
+            <div class="flex justify-center gap-6 mb-6">
+                <div class="p-4 bg-white shadow-lg rounded-lg transform hover:scale-105 transition">
+                    <div class="text-yellow-500 text-3xl">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <p class="mt-2 text-gray-800 font-medium">Nikmati Hidangan Anda</p>
+                </div>
+                <div class="p-4 bg-white shadow-lg rounded-lg transform hover:scale-105 transition">
+                    <div class="text-blue-500 text-3xl">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <p class="mt-2 text-gray-800 font-medium">Semoga Hari Anda Menyenangkan</p>
+                </div>
+                <div class="p-4 bg-white shadow-lg rounded-lg transform hover:scale-105 transition">
+                    <div class="text-red-500 text-3xl">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p class="mt-2 text-gray-800 font-medium">Terima Kasih atas Dukungan Anda</p>
+                </div>
+            </div>
+            <p class="text-gray-700 mb-6">Jika Kamu memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, jangan ragu untuk menghubungi kami melalui kontak yang tersedia.</p>
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4">Masukan Kritik dan Saran</h3>
+                <textarea id="kritikSaran" placeholder="Tulis kritik dan saran Anda di sini..." class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"></textarea>
+                <button onclick="kirimSaran()" class="mt-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-500 hover:to-yellow-500 text-white font-bold py-3 px-6 rounded-full transition shadow-lg">
+                    <i class="fas fa-paper-plane mr-2"></i>KIRIM
+                </button>
+            </div>
+            <a href="index.html" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-orange-500 hover:to-yellow-500 text-white font-bold py-3 px-6 rounded-full transition shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>Kembali ke Beranda
+            </a>
+        </section>
+    </main>
+
+    <!-- Pop-up Notification -->
+    <div id="popup" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-center py-3 px-6 rounded-lg shadow-lg z-50">
+        <p id="popupMessage">Berhasil Terkirim!</p>
+    </div>
+
+    <footer class="bg-black text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Kafe Kita. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        function kirimSaran() {
+            const kritikSaran = document.getElementById('kritikSaran').value;
+
+            if (kritikSaran.trim() === "") {
+                alert("Silakan isi kritik dan saran terlebih dahulu.");
+                return;
+            }
+
+            // Show the pop-up
+            const popup = document.getElementById('popup');
+            popup.classList.remove('hidden');
+
+            // Hide the pop-up after 3 seconds
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 3000);
+
+            // Clear the textarea
+            document.getElementById('kritikSaran').value = "";
+        }
+    </script>
+</body>
+</html>
